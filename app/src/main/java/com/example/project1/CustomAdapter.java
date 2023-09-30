@@ -75,11 +75,11 @@ public class CustomAdapter extends BaseAdapter {
 
                     //change focus to the following edit text and wait for enter button to be pressed
                     int nextEditText = i+1;
-                    if(nextEditText<=inputs.length){
+                    if(nextEditText<inputs.length){
                         EditText next = ((LinearLayout) grid.getChildAt(nextEditText)).findViewById(R.id.input);
                         EditText current = ((LinearLayout) grid.getChildAt(i)).findViewById(R.id.input);
                         char currentTag = (Character)current.getTag();
-                        Toast.makeText(context, "checking edittext tag: "+currentTag+"  ", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "checking edittext tag: "+currentTag+"  ", Toast.LENGTH_SHORT).show();
                         if(currentTag=='5')
                             ;
 
@@ -118,7 +118,7 @@ public class CustomAdapter extends BaseAdapter {
                     }
 
                     // add this letter to global word (current)
-                    Toast.makeText(context, "checking storedChar: "+ storedChar, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "checking storedChar: "+ storedChar, Toast.LENGTH_SHORT).show();
 
                     MainActivity.stringConcat(storedChar);
 

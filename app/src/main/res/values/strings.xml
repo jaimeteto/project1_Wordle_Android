@@ -12,7 +12,7 @@ Wordle is a word puzzle game that challenges your word-guessing skills.Here is h
 
    Correct letter in the correct position: These letters will be highlighted in green.\n
    Correct letter in the wrong position: These letters will be highlighted in yellow.\n
-   Letters not in the word: These letters will be grayed out.\n
+   Letters not in the word: These letters will be red.\n
 
         3. <b>Strategy</b>: Use your feedback to refine your guesses. Pay attention to which letters are in the word and where they belong. Eliminate letters that are not part of the word.\n
 
