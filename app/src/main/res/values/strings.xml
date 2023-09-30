@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">project1</string>
+    <string name="instructions">         <h1> <b>Welcome to Wordle!</b></h1> \n
+
+<h2>Rules:\n</h2>
+
+Wordle is a word puzzle game that challenges your word-guessing skills.Here is how to play:\n
+
+        1. <b>Objective</b>: Your goal is to guess the secret five-letter word chosen by the game. You have six attempts to guess the word correctly.\n
+
+2. <b>Guessing</b>: To make a guess, simply type a five-letter word and press the submit button. Your guess will be evaluated, and you will receive feedback:\n
+
+   Correct letter in the correct position: These letters will be highlighted in green.\n
+   Correct letter in the wrong position: These letters will be highlighted in yellow.\n
+   Letters not in the word: These letters will be grayed out.\n
+
+        3. <b>Strategy</b>: Use your feedback to refine your guesses. Pay attention to which letters are in the word and where they belong. Eliminate letters that are not part of the word.\n
+
+        4. <b>Winning</b>: If you guess the word within six attempts, you win the game!\n\n
+
+        Ready to get started? Good luck, and may your word-guessing skills lead you to victory!
+
+
+    </string>
 </resources>

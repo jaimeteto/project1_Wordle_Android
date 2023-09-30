@@ -1,4 +1,5 @@
 package com.example.project1;
+import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -51,7 +52,15 @@ public class CustomAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.input, null); // inflate the layout
             //get the view
 
-            EditText input1 = (EditText) view.findViewById(R.id.input); // get the reference of ImageView
+            EditText input1 = (EditText) view.findViewById(R.id.input);// get the reference of ImageView
+
+            input1.setTag(inputs[i]);// setting the position for each edittext view
+            if(i==0){
+                input1.setFocusableInTouchMode(true); //enable only first textedit
+            }
+            else
+                input1.setFocusable(false); //disable the rest until input has been received
+
             input1.addTextChangedListener(new TextWatcher() {
 
                 public void afterTextChanged(Editable s) {}
@@ -62,11 +71,22 @@ public class CustomAdapter extends BaseAdapter {
 
                 public void onTextChanged(CharSequence s, int start,
                                           int before, int count) {
-                    //change focus to the following edit text
+
+
+                    //change focus to the following edit text and wait for enter button to be pressed
                     int nextEditText = i+1;
                     if(nextEditText<=inputs.length){
                         EditText next = ((LinearLayout) grid.getChildAt(nextEditText)).findViewById(R.id.input);
-                        next.requestFocus();
+                        EditText current = ((LinearLayout) grid.getChildAt(i)).findViewById(R.id.input);
+                        char currentTag = (Character)current.getTag();
+                        Toast.makeText(context, "checking edittext tag: "+currentTag+"  ", Toast.LENGTH_SHORT).show();
+                        if(currentTag=='5')
+                            ;
+
+                        else {
+                            next.setFocusableInTouchMode(true);
+                            next.requestFocus();
+                        }
                     }
 
                     }
@@ -85,11 +105,23 @@ public class CustomAdapter extends BaseAdapter {
             myButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context.getApplicationContext(), "1", Toast.LENGTH_SHORT).show();
+
                     String storedChar = ((Button) view).getText().toString();
-                    //EditText current = ((LinearLayout) grid.getChildAt(0)).findViewById(R.id.input);
-                    EditText current = ((LinearLayout) grid.getFocusedChild()).findViewById(R.id.input);
-                    //Toast.makeText(context, "Item was pressed ", Toast.LENGTH_SHORT).show();
+                    LinearLayout child = (LinearLayout) grid.getFocusedChild(); // get the text edit that currently holds the focus
+                    EditText current;
+
+                    if(child ==null){//if there is no focus
+                        current = ((LinearLayout) grid.getChildAt(0)).findViewById(R.id.input);// if there is no focus then give it to the first edittext
+                    }
+                    else{
+                        current = ((LinearLayout) grid.getFocusedChild()).findViewById(R.id.input); //current child holding the focus
+                    }
+
+                    // add this letter to global word (current)
+                    Toast.makeText(context, "checking storedChar: "+ storedChar, Toast.LENGTH_SHORT).show();
+
+                    MainActivity.stringConcat(storedChar);
+
                     current.setText(storedChar);
 
                 }
